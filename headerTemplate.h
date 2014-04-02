@@ -7,8 +7,12 @@ Classname.h
 History
 	XX/XX/XX	Person's name	Summary of edits made
 	XX/XX/XX	Person's name	Summary of edits made
+To Do
+	To do item 1
+	To do item 2
 BUT SERIOUSLY, THE ACTUAL HISTORY OF THIS TEMPLATE FILE
-	04/01/14	Jon Richelsen	Created file
+	04/01/14	Jon Richelsen	Create file
+	04/02/14	Jon Richelsen	Add "To Do" section
 */
 #ifndef CLASSNAME_H
 #define CLASSNAME_H
