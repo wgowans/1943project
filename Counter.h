@@ -26,7 +26,7 @@
 
 #include <iostream>
 #include "SDL/SDL.h"
-#include "SDL_TTF/SDL_TTF.h"
+#include "SDL/SDL_ttf.h"
 
 class Counter {
 private:
