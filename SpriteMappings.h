@@ -326,7 +326,7 @@ SDL_Rect spr_plyr_intr_5; //sprite of stage 5/7 of player intro sequence
 spr_plyr_intr_5.x = 163;
 spr_plyr_intr_5.y = 134;
 spr_plyr_intr_5.w = 30;
-spr_plyr_intr_5.h = 15;
+spr_plyr_intr_5.h = 16;
 
 SDL_Rect spr_plyr_intr_6; //sprite of stage 6/7 of player intro sequence
 spr_plyr_intr_6.x = 205;
@@ -695,28 +695,28 @@ spr_doubGreen_roll7.w = 8;
 spr_doubGreen_roll7.h = 15;
 
 SDL_Rect spr_purp4; //sprite of purple plane 1 (largest of 4)
-spr_purp4.x = 298;
-spr_purp4.y = 331;
-spr_purp4.w = 16;
-spr_purp4.h = 13;
+spr_purp4.x = 192;
+spr_purp4.y = 324;
+spr_purp4.w = 30;
+spr_purp4.h = 28;
 
 SDL_Rect spr_purp3; //sprite of purple plane 2 (second largest of 4)
-spr_purp3.x = 272;
-spr_purp3.y = 329;
-spr_purp3.w = 16;
-spr_purp3.h = 16;
+spr_purp3.x = 236;
+spr_purp3.y = 328;
+spr_purp3.w = 24;
+spr_purp3.h = 21;
 
 SDL_Rect spr_purp2; //sprite of purple plane 3 (second smallest of 4)
-spr_purp2.x = 236;
-spr_purp2.y = 328;
-spr_purp2.w = 24;
-spr_purp2.h = 21;
+spr_purp2.x = 272;
+spr_purp2.y = 329;
+spr_purp2.w = 16;
+spr_purp2.h = 16;
 
 SDL_Rect spr_purp1; //sprite of purple plane 4 (smallest of 4)
-spr_purp1.x = 192;
-spr_purp1.y = 324;
-spr_purp1.w = 30;
-spr_purp1.h = 28;
+spr_purp1.x = 298;
+spr_purp1.y = 331;
+spr_purp1.w = 16;
+spr_purp1.h = 13;
 
 SDL_Rect spr_bigGray; //sprite of big gray plane
 spr_bigGray.x = 191;
