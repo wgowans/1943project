@@ -13,8 +13,9 @@ To Do
 BUT SERIOUSLY, THE ACTUAL HISTORY OF THIS TEMPLATE FILE
 	04/01/14	Jon Richelsen	Create file
 	04/02/14	Jon Richelsen	Add "To Do" section
+	04/08/14	Jon Richelsen	Fix a few typos
 */
-#include"Classname.h" //The header file for the class should be the FIRST #include
+#include"Classname.h" //The header file for the class should be the FIRST 
 #include<libararyA> //note that these are in alphabetical order
 #include<libararyB>
 #include<libararyC>
