@@ -2,8 +2,8 @@
 Bill Gowans, Jack Magiera, Jon Richelsen
 CSE20212
 1943_Project
-Classname.cpp
-	Implementation of classname class (description of class purpose)
+Player.cpp
+	Implementation of Player class (coordinate movement and sprites of player's plane)ose)
 History
 	XX/XX/XX	Person's name	Summary of edits made
 	XX/XX/XX	Person's name	Summary of edits made

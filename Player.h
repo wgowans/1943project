@@ -1,11 +1,27 @@
+/*
+Bill Gowans, Jack Magiera, Jon Richelsen
+CSE20212
+1943_Project
+Player.h
+	Interface of Player class (coordinate movement and sprites of player's plane)
+History
+	03/31/14	Bill Gowans		Create, declare constructor, Sprite(), scoreCntr(), healthCntr(), ammoCntr(), livesCntr(), getX(), getY(), getXVel(), getYVel, and private variables x_vel and y_vel
+	04/09/14	Jon Richelsen	Standardize, 
+To Do
+*/
+#ifndef GRAPHELEMENT_H
+#define GRAPHELEMENT_H
+
+#include<string>
+#include<vector>
+#include"SDL/SDL.h"
+
 #ifndef PLAYER_H
 #define PLAYER_H
 
-using namespace std;
-
-class Player : GraphElement (int, int) {
+class Player : GraphElement{
 	public:
-		Player ();
+		Player(int, int);
 		Sprite for (string, string);
 		Sprite slightR (string, int, int);
 		Sprite sharpR (string, int, int);
@@ -15,13 +31,7 @@ class Player : GraphElement (int, int) {
 		Counter healthCntr (int);
 		Counter ammoCntr (int);
 		Counter livesCntr (int);
-		int getX ();
-		int getY ();
-		int getXVel ();
-		int getYVel();
 	private:
-		int x_vel;
-		int y_vel;
 };
 
 #endif
