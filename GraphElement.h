@@ -19,7 +19,7 @@ To Do
 
 typedef struct {
 	string name;
-	SDL_Rect clip
+	SDL_Rect clip;
 } sprite;
 
 class GraphElement {
