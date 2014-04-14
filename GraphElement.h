@@ -18,21 +18,21 @@ To Do
 #include"SDL/SDL.h"
 
 typedef struct {
-	string name;
+	std::string name;
 	SDL_Rect clip;
 } sprite;
 
 class GraphElement {
 	public:
 		GraphElement(int, int); //nondefault constructor, sets position [xPos, yPos]
-		void addSprite(string, SDL_Rect); //adds sprite struct to sprites array [name, clip]
+		void addSprite(std::string, SDL_Rect); //adds sprite struct to sprites array [name, clip]
 		virtual SDL_Rect getSprite() = 0; //returns SDL_Rect of sprite based on derived class behavior
 		int getX();
 		int getY();
 		void setX(int);
 		void setY(int);
 	private:
-		vector<sprite> sprites;
+		std::vector<sprite> sprites;
 		int xPos;
 		int yPos;
 };

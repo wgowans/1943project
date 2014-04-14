@@ -2,6 +2,7 @@
 #include "SDL/SDL_image.h"
 #include "SDL/SDL_ttf.h"
 #include "Counter.h"
+#include "GraphElement.h"
 #include <string>
 
 const int WINDOW_WIDTH = 640;
@@ -60,8 +61,8 @@ int main(int argc, char **argv)
 	if (loadFiles() == false) return 1;
 	std::cout << "Loaded" << std::endl;
 
-    Counter score;
-    score.increment(5);
+	Counter score;
+	score.increment(5);
     
 	double x = 0;
 	double y = 0;    
@@ -77,7 +78,9 @@ int main(int argc, char **argv)
 	test.y = 28;
 	test.w = 24;
 	test.h = 16;
-    
+
+	std::vector<GraphElement*> elements;	
+
     while (gameRunning)
     {
 	scoreSurface = score.render(font, foregroundColor);

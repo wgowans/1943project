@@ -11,27 +11,28 @@ To Do
 	Coordinate loading of sprites in driver
 */
 
+#include "GraphElement.h"
 #include<string>
 #include<vector>
-#include"SDL/SDL.h"
+#include "SDL/SDL.h"
 
 GraphElement::GraphElement(int xP, int yP) { //nondefault constructor, sets position [xPos, yPos]
 	xPos = xP;
 	yPos = yP;
 }
 
-void GraphElement::addSprite(string n, SDL_Rect c) { //adds sprite struct to sprites array [name, clip]
+void GraphElement::addSprite(std::string n, SDL_Rect c) { //adds sprite struct to sprites array [name, clip]
 	sprite newSprite;
 	newSprite.name = n;
 	newSprite.clip = c;
-	sprites.pushback(newSprite);
+	sprites.push_back(newSprite);
 }
 
-int GraphElement::getX {
+int GraphElement::getX() {
 	return xPos;
 }
 
-int GraphElement::getY {
+int GraphElement::getY() {
 	return yPos;
 }
 
