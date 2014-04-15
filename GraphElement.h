@@ -31,8 +31,8 @@ class GraphElement {
 		int getY();
 		void setX(int);
 		void setY(int);
-	private:
 		std::vector<sprite> sprites;
+	private:
 		int xPos;
 		int yPos;
 };

@@ -9,8 +9,6 @@ History
 	04/09/14	Jon Richelsen	Standardize, 
 To Do
 */
-#ifndef GRAPHELEMENT_H
-#define GRAPHELEMENT_H
 
 #include<string>
 #include<vector>
@@ -19,18 +17,21 @@ To Do
 #ifndef PLAYER_H
 #define PLAYER_H
 
-class Player : GraphElement{
+#include "GraphElement.h"
+
+class Player : public GraphElement{
 	public:
 		Player(int, int);
-		Sprite for (string, string);
-		Sprite slightR (string, int, int);
-		Sprite sharpR (string, int, int);
-		Sprite slightL (string, int, int);
-		Sprite sharpR (string, int, int);
-		Counter scoreCntr (int);
-		Counter healthCntr (int);
-		Counter ammoCntr (int);
-		Counter livesCntr (int);
+		SDL_Rect getSprite();
+//		Sprite for (string, string);
+//		Sprite slightR (string, int, int);
+//		Sprite sharpR (string, int, int);
+//		Sprite slightL (string, int, int);
+//		Sprite sharpR (string, int, int);
+//		Counter scoreCntr (int);
+//		Counter healthCntr (int);
+//		Counter ammoCntr (int);
+//		Counter livesCntr (int);
 	private:
 };
 

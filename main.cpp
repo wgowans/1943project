@@ -4,6 +4,7 @@
 #include "Counter.h"
 #include "GraphElement.h"
 #include <string>
+#include "Player.h"
 
 const int WINDOW_WIDTH = 640;
 const int WINDOW_HEIGHT = 480;
@@ -81,6 +82,8 @@ int main(int argc, char **argv)
 
 	std::vector<GraphElement*> elements;	
 
+	Player newPlayer(0,0);
+	elements.push_back(&newPlayer);
     while (gameRunning)
     {
 	scoreSurface = score.render(font, foregroundColor);
@@ -117,7 +120,7 @@ int main(int argc, char **argv)
         SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
         
         SDL_BlitSurface(scoreSurface, NULL, screen, &scoreLocation);
-	applySurface(x,y,sheet,screen, &test);        
+	applySurface(x,y,sheet,screen, &newPlayer.getSprite());        
         SDL_Flip(screen);
     }
     

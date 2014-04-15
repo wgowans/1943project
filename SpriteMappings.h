@@ -22,6 +22,8 @@ Visit me at jonrichelsen.com
 Takes user-inputted name and coordinates for sprites and formats them into SDL_Rect structs
 */
 
+struct SpriteMappings {
+
 SDL_Rect rect_plyr_hlthy_fRollLeft; //sprite of healthy player full roll left
 rect_plyr_hlthy_fRollLeft.x = 15;
 rect_plyr_hlthy_fRollLeft.y = 28;
@@ -742,4 +744,5 @@ rect_greenBoss_rollRight.y = 400;
 rect_greenBoss_rollRight.w = 40;
 rect_greenBoss_rollRight.h = 46;
 
+};
 #endif //SPRITEMAPPINGS_H
