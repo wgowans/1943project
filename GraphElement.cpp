@@ -16,7 +16,7 @@ To Do
 #include<vector>
 #include "SDL/SDL.h"
 
-GraphElement::GraphElement(int xP, int yP) { //nondefault constructor, sets position [xPos, yPos]
+GraphElement::GraphElement(double xP, double yP) { //nondefault constructor, sets position [xPos, yPos]
 	xPos = xP;
 	yPos = yP;
 }
@@ -28,18 +28,18 @@ void GraphElement::addSprite(std::string n, SDL_Rect c) { //adds sprite struct t
 	sprites.push_back(newSprite);
 }
 
-int GraphElement::getX() {
+double GraphElement::getX() {
 	return xPos;
 }
 
-int GraphElement::getY() {
+double GraphElement::getY() {
 	return yPos;
 }
 
-void GraphElement::setX(int xP) {
+void GraphElement::setX(double xP) {
 	xPos = xP;
 }
 
-void GraphElement::setY(int yP) {
+void GraphElement::setY(double yP) {
 	yPos = yP;
 }

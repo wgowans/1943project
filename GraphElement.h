@@ -24,17 +24,17 @@ typedef struct {
 
 class GraphElement {
 	public:
-		GraphElement(int, int); //nondefault constructor, sets position [xPos, yPos]
+		GraphElement(double, double); //nondefault constructor, sets position [xPos, yPos]
 		void addSprite(std::string, SDL_Rect); //adds sprite struct to sprites array [name, clip]
 		virtual SDL_Rect getSprite() = 0; //returns SDL_Rect of sprite based on derived class behavior
-		int getX();
-		int getY();
-		void setX(int);
-		void setY(int);
+		double getX();
+		double getY();
+		void setX(double);
+		void setY(double);
 		std::vector<sprite> sprites;
 	private:
-		int xPos;
-		int yPos;
+		double xPos;
+		double yPos;
 };
 
 #endif //GRAPHELEMENT_H

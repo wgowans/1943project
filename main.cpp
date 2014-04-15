@@ -6,8 +6,8 @@
 #include <string>
 #include "Player.h"
 
-const int WINDOW_WIDTH = 640;
-const int WINDOW_HEIGHT = 480;
+const int WINDOW_WIDTH = 480;
+const int WINDOW_HEIGHT = 640;
 const char* WINDOW_TITLE = "SDL Start";
 
 SDL_Surface *sheet = NULL;
@@ -65,8 +65,6 @@ int main(int argc, char **argv)
 	Counter score;
 	score.increment(5);
     
-	double x = 0;
-	double y = 0;    
     
     // Pass zero for width and height to draw the whole surface
     SDL_Rect scoreLocation = { 5, WINDOW_HEIGHT - 100, 0, 0 };
@@ -75,17 +73,14 @@ int main(int argc, char **argv)
     bool gameRunning = true;
     SDL_Surface* scoreSurface = score.render(font, foregroundColor);
 
-	test.x = 65;
-	test.y = 28;
-	test.w = 24;
-	test.h = 16;
-
 	std::vector<GraphElement*> elements;	
 
 	Player newPlayer(0,0);
 	elements.push_back(&newPlayer);
     while (gameRunning)
     {
+	newPlayer.setXVel(0);
+	newPlayer.setYVel(0);
 	scoreSurface = score.render(font, foregroundColor);
         if (SDL_PollEvent(&event))
         {
@@ -112,15 +107,19 @@ int main(int argc, char **argv)
 
 //Begin testing movement
 		Uint8 *keystates = SDL_GetKeyState(NULL);
-		if (keystates[SDLK_UP] && y > 1) y -= .5;
-		if (keystates[SDLK_DOWN] && y < WINDOW_HEIGHT - 10) y += .5;
-		if (keystates[SDLK_LEFT] && x > 1) x -= .5;
-		if (keystates[SDLK_RIGHT] && x < WINDOW_WIDTH - 10) x += .5;
+		if (keystates[SDLK_UP] && newPlayer.getY() > 1) newPlayer.setYVel(newPlayer.getYVel() - .1);
+		if (keystates[SDLK_DOWN] && newPlayer.getY() < WINDOW_HEIGHT - 10) newPlayer.setYVel(newPlayer.getYVel() + .1);
+		if (keystates[SDLK_LEFT] && newPlayer.getX() > 1) newPlayer.setXVel(newPlayer.getXVel() - .1);
+		if (keystates[SDLK_RIGHT] && newPlayer.getX() < WINDOW_WIDTH - 10) newPlayer.setXVel(newPlayer.getXVel() + .1);
         
+	
         SDL_FillRect(screen, NULL, SDL_MapRGB(screen->format, 0, 0, 0));
         
         SDL_BlitSurface(scoreSurface, NULL, screen, &scoreLocation);
-	applySurface(x,y,sheet,screen, &newPlayer.getSprite());        
+	newPlayer.setX(newPlayer.getX()+newPlayer.getXVel());
+	newPlayer.setY(newPlayer.getY()+newPlayer.getYVel());
+
+	applySurface(newPlayer.getX(),newPlayer.getY(),sheet,screen, &newPlayer.getSprite());        
         SDL_Flip(screen);
     }
     

@@ -18,7 +18,10 @@ To Do
 #include "SDL/SDL.h"
 #include "GraphElement.h"
 
-Player::Player(int xP, int yP) : GraphElement(xP, yP) {
+Player::Player(double xP, double yP) : GraphElement(xP, yP) {
+	
+	xVel = 0;
+	yVel = 0;
 
 	SDL_Rect rect_plyr_hlthy_fRollLeft; //sprite of healthy player full roll left
 	rect_plyr_hlthy_fRollLeft.x = 15;
@@ -102,10 +105,31 @@ Player::Player(int xP, int yP) : GraphElement(xP, yP) {
 
 SDL_Rect Player::getSprite() {
 	int i = 0;
+	std::string targetString;
+	if (getXVel() < 0) targetString = "plyr_hlthy_fRollLeft";
+	else if (getXVel() > 0) targetString = "plyr_hlthy_fRollRight";
+	else targetString = "plyr_hlthy_straight";
 	while (i < sprites.size()){
-		if (sprites[i].name == "plyr_hlthy_straight"){
+		if (sprites[i].name == targetString){
 			return sprites[i].clip;
 		}
 		i++;
 	}
+	return sprites[2].clip;
+}
+
+void Player::setYVel(double yv){
+	yVel = yv;
+}
+
+void Player::setXVel(double xv){
+        xVel = xv;
+}
+
+double Player::getXVel(){
+	return xVel;
+}
+
+double Player::getYVel(){
+	return yVel;
 }

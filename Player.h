@@ -21,7 +21,13 @@ To Do
 
 class Player : public GraphElement{
 	public:
-		Player(int, int);
+		Player(double, double);
+		double xVel;
+		double yVel;
+		void setXVel(double);
+		void setYVel(double);
+		double getXVel();
+		double getYVel();
 		SDL_Rect getSprite();
 //		Sprite for (string, string);
 //		Sprite slightR (string, int, int);
