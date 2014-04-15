@@ -12,6 +12,6 @@
 
 #### Current executables
 
-| Program | Description |
-| --- | --- |
-| *main.cpp* | Test of Counter.cpp functionality |
+| Program | Description | Command |
+| --- | --- | --- |
+| *main.cpp* | Test of Counter.cpp functionality | make main |
