@@ -1,3 +1,17 @@
+/*
+Bill Gowans, Jack Magiera, Jon Richelsen
+CSE20212
+1943_Project
+main.cpp
+	Driver for Blitz game
+History
+	03/26/14	Jack Magiera	Create, insert basic structure from Lazy Foo' SDL Tutorials
+	04/08/14	Jack Magiera	Add functionality to adjust counter using arrow keys
+	04/08/14	Jack Magiera	Implement simply flying plane sprite (does not use classes)
+	04/14/14	Jack Magiera	Edit to make compatible with GraphElement
+	04/16/14	Jon Richelsen	Standardize
+To Do
+*/
 #include<iostream>
 #include<string>
 #include"SDL/SDL.h"
