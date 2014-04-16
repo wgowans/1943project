@@ -8,8 +8,6 @@ History
 	03/26/14	Jack Magiera	Create, define default constructor, nondefault constructor, reset(), increment(), ++, getValue(), render(), and private variables min, max, value, interval, x, and y
 	04/16/14	Jon Richelsen	Standardize, change variables to more readable names, define getXPos(), getYPos(), ++ (prefix), and ++ (postfix)
 	04/16/14	Jon Richelsen	Fix typos
-To Do
-	Develop icon-based counter (e.g. would display 5 plane icons instead of "5")
 */
 #include "Counter.h"
 #include <sstream>

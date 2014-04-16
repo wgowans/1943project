@@ -7,9 +7,6 @@ GraphElement.cpp
 History
 	03/31/14	Bill Gowans		Create
 	04/09/14	Jon Richelsen	Standardize
-To Do
-	Finish implementation
-	Test
 */
 
 #include "Player.h"

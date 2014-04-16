@@ -7,7 +7,6 @@ Background.cpp
 History
 	03/31/14	Bill Gowans		Create
 	04/02/14	Jon Richelsen	Standardize
-To Do
 */
 
 Background::Background (string x) {

@@ -7,8 +7,6 @@ GraphElement.cpp
 History
 	03/31/14	Bill Gowans		Define constructor and SDL_graph_function()
 	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, define constructor, addSprite(), getSprite(), getX(), getY(), setX(), and setY()
-To Do
-	Coordinate loading of sprites in driver
 */
 
 #include "GraphElement.h"

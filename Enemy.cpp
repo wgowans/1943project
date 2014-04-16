@@ -7,6 +7,4 @@ Enemy.cpp
 History
 	03/31/14	Bill Gowans		Create
 	04/16/14	Jon Richelsen	Standardize
-To Do
-	Completely revamp class
 */
