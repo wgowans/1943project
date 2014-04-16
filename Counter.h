@@ -1,50 +1,41 @@
-// Counter.h
-// The counter class is an interface of a player class that keeps track of properties that must be counted. This interface is designed to work with SDL to display appropriately on the screen.
-// The counter class consists of a maximum, a minimum, an interval, and an icon. The display will as of now look something like this:
 /*
- 
- 
- B: 3
- L: 10
- SCORE: 56034200
- 
- (Where B and L are icons for Bombs and Lives.)
- 
- */
-// Changes may be made in the future to allow the display to look something like this:
-/*
- 
- B B B
- LLLLLLLLLL
- SCORE: 56034200
- 
- */
-// However, that would most likely require an additional subclass.
+Bill Gowans, Jack Magiera, Jon Richelsen
+CSE20212
+1943_Project
+Counter.h
+	Interface of Counter class (tracks and visually displays properties)
+History
+	03/26/14	Jack Magiera	Create, declare default constructor, nondefault constructor, reset(), increment(), ++, getValue(), render(), and private variables min, max, value, interval, x, and y
+	04/16/14	Jon Richelsen	Standardize, change variables to more readable names, declare getXPos(), getYPos(), ++ (prefix), and ++ (postfix)
+To Do
+	Check that overloaded ++ operator works
+	Develop icon-based counter (e.g. would display 5 plane icons instead of "5")
+*/
+#ifndef COUNTER_H
+#define COUNTER_H
 
-#ifndef __SDL_Setup__Counter__
-#define __SDL_Setup__Counter__
-
-#include <iostream>
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"
 
 class Counter {
+	public:
+		Counter(); //default constructor, sets x-position to 100, y-position to 10, value to 0, minimum to 0, maximum to 10, and interval to 1 [xPos = 100, yPos = 10, value = 0, min = 0, max = 10, interval = 1]
+		Counter(int, int, int, int, int, int); //nondefault constructor, sets x-position, y-position, value, minimum, maximum, and interval [xPos, yPos, value, min, max, interval]
+		int getValue();
+		int getXPos();
+		int getYPos();
+		void increment(int); //increments counter by n intervals [n]
+		void reset();
+		SDL_Surface * render(TTF_Font *, SDL_Color);
+		Counter operator++(); //overloads prefix ++ operator to increase value by one interval
+		Counter operator++(int); //overloads postix ++ operator to increase value by one interval
 private:
-    int min;
-    int max;
-    int value;
-    int interval;
-    int x;
-    int y;
-public:
-    Counter();
-    Counter(int, int, int, int, int, int);
-    void reset();
-    void increment(int);
-    friend Counter operator++(Counter&,int);
-    int getValue();
-    SDL_Surface* render(TTF_Font*, SDL_Color);
+		int xPos;
+		int yPos;
+		int value;
+		int min;
+		int max;
+		int interval;
 };
 
-
-#endif /* defined(__SDL_Setup__Counter__) */
+#endif //CLASSNAME_H

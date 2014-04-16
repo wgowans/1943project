@@ -1,9 +1,10 @@
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_ttf.h"
-#include "Counter.h"
-#include "GraphElement.h"
-#include <string>
+#include<iostream>
+#include<string>
+#include"SDL/SDL.h"
+#include"SDL/SDL_image.h"
+#include"SDL/SDL_ttf.h"
+#include"Counter.h"
+#include"GraphElement.h"
 #include "Player.h"
 
 const int WINDOW_WIDTH = 480;

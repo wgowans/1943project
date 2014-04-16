@@ -1,59 +1,74 @@
-//
-//  Counter.cpp
-//  SDL_Setup
-//
-//  Created by Jack Magiera on 3/21/14.
-//  Copyright (c) 2014 Jack Magiera. All rights reserved.
-//
-
+/*
+Bill Gowans, Jack Magiera, Jon Richelsen
+CSE20212
+1943_Project
+Counter.h
+	Interface of Counter class (tracks and visually displays properties)
+History
+	03/26/14	Jack Magiera	Create, define default constructor, nondefault constructor, reset(), increment(), ++, getValue(), render(), and private variables min, max, value, interval, x, and y
+	04/16/14	Jon Richelsen	Standardize, change variables to more readable names, define getXPos(), getYPos(), ++ (prefix), and ++ (postfix)
+To Do
+	Develop icon-based counter (e.g. would display 5 plane icons instead of "5")
+*/
+#include "Counter.h"
 #include <sstream>
 #include <string>
-#include "Counter.h"
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
 #include "SDL/SDL.h"
 #include "SDL/SDL_ttf.h"
 
-Counter::Counter(){
-    min = 0;
-    max = 10;
-    interval = 1;
-    x = 100;
-    y = 10;
-    value = 0;
+Counter::Counter() { //default constructor, sets x-position to 100, y-position to 10, value to 0, minimum to 0, maximum to 10, and interval to 1 [xPos = 100, yPos = 10, value = 0, min = 0, max = 10, interval = 1]
+	xPos = 100;
+	yPos = 10;
+	value = 0;
+	min = 0;
+	max = 10;
+	interval = 1;
 }
 
-Counter::Counter(int x, int y, int min, int max, int start, int interval){
-    min = min;
-    max = max;
-    interval = interval;
-    x = x;
-    y = y;
-    value = start;
+Counter::Counter(int xP, int yP, int v, int mi, int ma, int i) { //nondefault constructor, sets x-position, y-position, value, minimum, maximum, and interval [xPos, yPos, value, min, max, interval]
+	xPos = xP;
+	yPos = yP;
+	value = v;
+	min = mi;
+	max = ma;
+	interval = i;
 }
 
-void Counter::increment(int times){
-        value += interval * times;
-}
-
-Counter operator++ (Counter & C, int z){
-    C.increment(1);
-    return C;
-}
-
-void Counter::reset(){
-    value = min;
-}
-
-int Counter::getValue(){
+int Counter::getValue() {
     return value;
 }
 
-SDL_Surface* Counter::render(TTF_Font* font, SDL_Color color){
-    std::stringstream ss;
-    ss << value;
-    std::string s = ss.str();
-    SDL_Surface* display = TTF_RenderText_Solid(font, s.c_str(), color);
-    return display;
+int Counter::getXPos() {
+    return xPos;
+}
+
+int Counter::getYPos() {
+    return yPos;
+}
+
+void Counter::increment(int times) { //increments counter by n intervals
+	value += interval * times;
+}
+
+void Counter::reset() {
+    value = min;
+}
+
+SDL_Surface * Counter::render(TTF_Font * font, SDL_Color color) {
+    std::stringstream valueStream; //create stringstream to store value
+    valueStream << value; //feed value (int) into stringstream
+    std::string valueString = valueStream.str(); //extract string from stringstream
+    SDL_Surface * counterSurface = TTF_RenderText_Solid(font, valueString.c_str(), color); //create surface
+    return counterSurface;
+}
+
+Counter Counter::operator++() { //overloads prefix ++ operator to increase value by 1 interval
+    this->increment(1); //increment Counter
+    return *this; //return Counter
+}
+
+Counter Counter::operator++(int) { //overloads postfix ++ operator to increase value by one interval
+    Counter tempCounter(xPos, yPos, value, min, max, interval); //create temporary Counter with original values
+    this->increment(1); //increment Counter
+    return tempCounter; //return temporary Counter with original values
 }
