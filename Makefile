@@ -1,19 +1,27 @@
-all: main
+CXX := g++
+CXXFLAGS := -g -Wall
+RM := rm -f
+LDLIBS := -lSDL -lSDL_image -lSDL_ttf
+EXEC := Blitz
 
-main: main.o Counter.o Player.o GraphElement.o
-	g++ main.o Counter.o GraphElement.o Player.o -o main -lSDL -lSDL_image -lSDL_ttf
+OBJS := main.o Counter.o GraphElement.o Player.o
 
-GraphElement.o:
-	g++ -c GraphElement.cpp
+all: $(EXEC)
 
-Player.o:
-	g++ -c Player.cpp
+$(EXEC): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(EXEC) $(LDLIBS)
 
 main.o: main.cpp
-	g++ -c main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
-Counter.o: Counter.cpp
-	g++ -c Counter.cpp
+Counter.o: Counter.h Counter.cpp
+	$(CXX) $(CXXFLAGS) -c Counter.cpp
+
+GraphElement.o: GraphElement.h GraphElement.cpp
+	$(CXX) $(CXXFLAGS) -c GraphElement.cpp
+
+Player.o: Player.h Player.cpp
+	$(CXX) $(CXXFLAGS) -c Player.cpp
 
 clean:
-	rm -f *.o main
+	$(RM) *.o $(EXEC)
