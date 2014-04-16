@@ -13,12 +13,14 @@ To Do
 BUT SERIOUSLY, THE ACTUAL HISTORY OF THIS TEMPLATE FILE
 	04/01/14	Jon Richelsen	Create file
 	04/02/14	Jon Richelsen	Add "To Do" section
+	04/14/14 Jon Richelsen	Clarified order of #includes
 */
 #ifndef CLASSNAME_H
 #define CLASSNAME_H
 
-#include<vector> //note that these are in alphabetical order
-#include"Sprite.h"
+#include<vector> //note that these are in alphabetical order (all libraries with < go first)
+#include"SDL/SDL.h" //SDL libraries come second
+#include"Sprite.h" //user-created header files come last
 /*
 NOTE: This is not me (Jon) being super picky. I've spend some time on Stack Overflow and this seems to be the accepted industry practice. ONLY #include IN HEADERS WHAT IS NEEDED TO SUPPORT THE HEADER. In this example, "Sprite.h" is needed because there is a Sprite object "sampleSprite". <vector> is needed because there is a vector<int> object "weapons". The other #includes will be in the source file.
 
@@ -38,6 +40,7 @@ class Classname {
 		int nGuns;
 		int nRockets;
 		//These variables have obvious names, so NO COMMENTING NECESSARY!
+		SDL_Rect test;
 		double yaw; //angle (measured in radians with forward being 0) of plane's rotation around y-axis
 		//That variable needed a comment because it needed explanation of units and how it is measured
 };
