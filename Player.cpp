@@ -2,23 +2,23 @@
 Bill Gowans, Jack Magiera, Jon Richelsen
 CSE20212
 1943_Project
-GraphElement.cpp
-	Implementation of GraphElement class (store location and sprites of graphic element)
+Player.cpp
+	Implementation of Player class (coordinate movement and sprites of player's plane)
 History
 	03/31/14	Bill Gowans		Create
-	04/09/14	Jon Richelsen	Standardize
+	04/09/14	Jon Richelsen	Start standardization
+	04/22/14 Jon Richelsen	Finish standardization, add intro sprites
 */
+#include"Player.h"
+#include<string>
+#include<vector>
+#include"SDL/SDL.h"
+#include"GraphElement.h"
 
-#include "Player.h"
-#include <string>
-#include <vector>
-#include "SDL/SDL.h"
-#include "GraphElement.h"
-
-Player::Player(double xP, double yP) : GraphElement(xP, yP) {
-	
+Player::Player(double xP, double yP) : GraphElement(xP, yP) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
 	xVel = 0;
 	yVel = 0;
+	weapon = STANDARD;
 
 	SDL_Rect rect_plyr_hlthy_fRollLeft; //sprite of healthy player full roll left
 	rect_plyr_hlthy_fRollLeft.x = 15;
@@ -32,7 +32,6 @@ Player::Player(double xP, double yP) : GraphElement(xP, yP) {
 	rect_plyr_hlthy_hRollLeft.w = 20;
 	rect_plyr_hlthy_hRollLeft.h = 16;
 
-	
 	SDL_Rect rect_plyr_hlthy_straight; //sprite of healthy player straight
 	rect_plyr_hlthy_straight.x = 65;
 	rect_plyr_hlthy_straight.y = 28;
@@ -81,52 +80,99 @@ Player::Player(double xP, double yP) : GraphElement(xP, yP) {
 	rect_plyr_dmgd_fRollRight.w = 16;
 	rect_plyr_dmgd_fRollRight.h = 16;
 	
-	addSprite("plyr_hlthy_fRollLeft",	rect_plyr_hlthy_fRollLeft);
-	addSprite("plyr_hlthy_hRollLeft",	rect_plyr_hlthy_hRollLeft);
-	addSprite("plyr_hlthy_straight",	rect_plyr_hlthy_straight);
-	addSprite("plyr_hlthy_hRollRight",	rect_plyr_hlthy_hRollRight);
-	addSprite("plyr_hlthy_fRollRight",	rect_plyr_hlthy_fRollRight);
-	addSprite("plyr_dmgd_fRollLeft",	rect_plyr_dmgd_fRollLeft);
-	addSprite("plyr_dmgd_hRollLeft",	rect_plyr_dmgd_hRollLeft);
-	addSprite("plyr_dmgd_straight",		rect_plyr_dmgd_straight);
-	addSprite("plyr_dmgd_hRollRight",	rect_plyr_dmgd_hRollRight);
-	addSprite("plyr_dmgd_fRollRight",	rect_plyr_dmgd_fRollRight);
-	/* addSprite("plyr_intr_1",			rect_plyr_intr_1);
-	addSprite("plyr_intr_2",			rect_plyr_intr_2);
-	addSprite("plyr_intr_3",			rect_plyr_intr_3);
-	addSprite("plyr_intr_4",			rect_plyr_intr_4);
-	addSprite("plyr_intr_5",			rect_plyr_intr_5);
-	addSprite("plyr_intr_6",			rect_plyr_intr_6);
-	addSprite("plyr_intr_7",			rect_plyr_intr_7); */
+	SDL_Rect rect_plyr_intr_1; //sprite of stage 1/7 of player intro sequence
+	rect_plyr_intr_1.x = 12;
+	rect_plyr_intr_1.y = 141;
+	rect_plyr_intr_1.w = 13;
+	rect_plyr_intr_1.h = 8;
+
+	SDL_Rect rect_plyr_intr_2; //sprite of stage 2/7 of player intro sequence
+	rect_plyr_intr_2.x = 39;
+	rect_plyr_intr_2.y = 141;
+	rect_plyr_intr_2.w = 21;
+	rect_plyr_intr_2.h = 13;
+
+	SDL_Rect rect_plyr_intr_3; //sprite of stage 3/7 of player intro sequence
+	rect_plyr_intr_3.x = 76;
+	rect_plyr_intr_3.y = 138;
+	rect_plyr_intr_3.w = 28;
+	rect_plyr_intr_3.h = 7;
+
+	SDL_Rect rect_plyr_intr_4; //sprite of stage 4/7 of player intro sequence
+	rect_plyr_intr_4.x = 119;
+	rect_plyr_intr_4.y = 139;
+	rect_plyr_intr_4.w = 30;
+	rect_plyr_intr_4.h = 6;
+
+	SDL_Rect rect_plyr_intr_5; //sprite of stage 5/7 of player intro sequence
+	rect_plyr_intr_5.x = 163;
+	rect_plyr_intr_5.y = 134;
+	rect_plyr_intr_5.w = 30;
+	rect_plyr_intr_5.h = 16;
+
+	SDL_Rect rect_plyr_intr_6; //sprite of stage 6/7 of player intro sequence
+	rect_plyr_intr_6.x = 205;
+	rect_plyr_intr_6.y = 132;
+	rect_plyr_intr_6.w = 28;
+	rect_plyr_intr_6.h = 16;
+
+	SDL_Rect rect_plyr_intr_7; //sprite of stage 7/7 of player intro sequence
+	rect_plyr_intr_7.x = 241;
+	rect_plyr_intr_7.y = 130;
+	rect_plyr_intr_7.w = 24;
+	rect_plyr_intr_7.h = 15;
+	
+	addSprite("spr_plyr_hlthy_fRollLeft",	rect_plyr_hlthy_fRollLeft);
+	addSprite("spr_plyr_hlthy_hRollLeft",	rect_plyr_hlthy_hRollLeft);
+	addSprite("spr_plyr_hlthy_straight",	rect_plyr_hlthy_straight);
+	addSprite("spr_plyr_hlthy_hRollRight",		rect_plyr_hlthy_hRollRight);
+	addSprite("spr_plyr_hlthy_fRollRight",		rect_plyr_hlthy_fRollRight);
+	addSprite("spr_plyr_dmgd_fRollLeft",			rect_plyr_dmgd_fRollLeft);
+	addSprite("spr_plyr_dmgd_hRollLeft",			rect_plyr_dmgd_hRollLeft);
+	addSprite("spr_plyr_dmgd_straight",			rect_plyr_dmgd_straight);
+	addSprite("spr_plyr_dmgd_hRollRight",		rect_plyr_dmgd_hRollRight);
+	addSprite("spr_plyr_dmgd_fRollRight",		rect_plyr_dmgd_fRollRight);
+	addSprite("spr_plyr_intr_1",					rect_plyr_intr_1);
+	addSprite("spr_plyr_intr_2",					rect_plyr_intr_2);
+	addSprite("spr_plyr_intr_3",					rect_plyr_intr_3);
+	addSprite("spr_plyr_intr_4",					rect_plyr_intr_4);
+	addSprite("spr_plyr_intr_5",					rect_plyr_intr_5);
+	addSprite("spr_plyr_intr_6",					rect_plyr_intr_6);
+	addSprite("spr_plyr_intr_7",					rect_plyr_intr_7);
 }
 
 SDL_Rect Player::getSprite() {
-	int i = 0;
-	std::string targetString;
-	if (getXVel() < 0) targetString = "plyr_hlthy_fRollLeft";
-	else if (getXVel() > 0) targetString = "plyr_hlthy_fRollRight";
-	else targetString = "plyr_hlthy_straight";
-	while (i < sprites.size()){
-		if (sprites[i].name == targetString){
-			return sprites[i].clip;
-		}
-		i++;
+	std::string targetName; //string of desired sprite's name
+	if(getXVel() < 0) { //if plane is moving left,
+		targetName = "spr_plyr_hlthy_fRollLeft";
+	} else if(getXVel() > 0) { //if plane is moving right,
+		targetName = "spr_plyr_hlthy_fRollRight";
+	} else {
+		targetName = "spr_plyr_hlthy_straight";
 	}
-	return sprites[2].clip;
+	
+	unsigned int i = 0; //iterator for searching sprites array (unsigned to satisfy -Wall)
+	while(i < sprites.size()) { //while iterator is less than size of sprites array,
+		if (sprites[i].name == targetName) { //if sprite's name matches target name,
+			return sprites[i].clip; //return that sprite's clip
+		}
+		i++; //increment iterator
+	}
+	return sprites[2].clip; //otherwise, return clip of "spr_plyr_hlthy_straight"
 }
 
-void Player::setYVel(double yv){
-	yVel = yv;
+void Player::setXVel(double xV) {
+	xVel = xV;
 }
 
-void Player::setXVel(double xv){
-        xVel = xv;
+void Player::setYVel(double yV) {
+	yVel = yV;
 }
 
-double Player::getXVel(){
+double Player::getXVel() {
 	return xVel;
 }
 
-double Player::getYVel(){
+double Player::getYVel() {
 	return yVel;
 }

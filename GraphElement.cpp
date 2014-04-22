@@ -7,14 +7,13 @@ GraphElement.cpp
 History
 	03/31/14	Bill Gowans		Define constructor and SDL_graph_function()
 	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, define constructor, addSprite(), getSprite(), getX(), getY(), setX(), and setY()
-	04/22/14	Jon Richelsen	Define deconstructor
+	04/22/14	Jon Richelsen	Define deconstructor, fix typos
 */
-
-#include "GraphElement.h"
+#include"GraphElement.h"
 #include<algorithm>
 #include<string>
 #include<vector>
-#include "SDL/SDL.h"
+#include"SDL/SDL.h"
 
 GraphElement::GraphElement(double xP, double yP) { //nondefault constructor, sets position [xPos, yPos]
 	xPos = xP;
