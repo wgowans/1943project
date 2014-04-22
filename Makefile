@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS :=
+CXXFLAGS := -g -Wall
 RM := rm -f
 LDLIBS := -lSDL -lSDL_image -lSDL_ttf
 EXEC := Blitz
