@@ -7,9 +7,9 @@ Player.h
 History
 	03/31/14	Bill Gowans		Create, declare constructor, Sprite(), scoreCntr(), healthCntr(), ammoCntr(), livesCntr(), getX(), getY(), getXVel(), getYVel, and private variables x_vel and y_vel
 	04/09/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Finish standardization, define weaponType enum
+	04/22/14 Jon Richelsen	Finish standardization, define spriteType and weaponType enums, sprite, and weapon
 To Do
-	Decide where to put weaponType enum
+	Decide where to put spriteType and weaponType enums
 */
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -18,6 +18,26 @@ To Do
 #include<vector>
 #include"SDL/SDL.h"
 #include "GraphElement.h"
+
+typedef enum {
+	SPR_PLYR_HLTHY_FROLLLEFT,
+	SPR_PLYR_HLTHY_HROLLLEFT,
+	SPR_PLYR_HLTHY_STRAIGHT,
+	SPR_PLYR_HLTHY_HROLLRIGHT,
+	SPR_PLYR_HLTHY_FROLLRIGHT,
+	SPR_PLYR_DMGD_FROLLLEFT,
+	SPR_PLYR_DMGD_HROLLLEFT,
+	SPR_PLYR_DMGD_STRAIGHT,
+	SPR_PLYR_DMGD_HROLLRIGHT,
+	SPR_PLYR_DMGD_FROLLRIGHT,
+	SPR_PLYR_INTR_1,
+	SPR_PLYR_INTR_2,
+	SPR_PLYR_INTR_3,
+	SPR_PLYR_INTR_4,
+	SPR_PLYR_INTR_5,
+	SPR_PLYR_INTR_6,
+	SPR_PLYR_INTR_7
+} spriteType;
 
 typedef enum {
 			STANDARD,
@@ -38,7 +58,8 @@ class Player : public GraphElement{
 	private:
 		double xVel;
 		double yVel;
-		weaponType weapon;
+		spriteType sprite; //enum that stores player plane's sprite
+		weaponType weapon; //enum that stores player plane's current weapon
 //		Counter ammoCntr (int);
 //		Counter healthCntr (int);
 		

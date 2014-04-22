@@ -7,7 +7,7 @@ Player.cpp
 History
 	03/31/14	Bill Gowans		Create
 	04/09/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Finish standardization, add intro sprites
+	04/22/14 Jon Richelsen	Finish standardization, add intro sprites, simplify getSprite using enum spriteType
 */
 #include"Player.h"
 #include<string>
@@ -18,6 +18,7 @@ History
 Player::Player(double xP, double yP) : GraphElement(xP, yP) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
 	xVel = 0;
 	yVel = 0;
+	sprite = SPR_PLYR_HLTHY_STRAIGHT;
 	weapon = STANDARD;
 
 	SDL_Rect rect_plyr_hlthy_fRollLeft; //sprite of healthy player full roll left
@@ -122,43 +123,36 @@ Player::Player(double xP, double yP) : GraphElement(xP, yP) { //nondefault const
 	rect_plyr_intr_7.w = 24;
 	rect_plyr_intr_7.h = 15;
 	
-	addSprite("spr_plyr_hlthy_fRollLeft",	rect_plyr_hlthy_fRollLeft);
-	addSprite("spr_plyr_hlthy_hRollLeft",	rect_plyr_hlthy_hRollLeft);
-	addSprite("spr_plyr_hlthy_straight",	rect_plyr_hlthy_straight);
-	addSprite("spr_plyr_hlthy_hRollRight",		rect_plyr_hlthy_hRollRight);
-	addSprite("spr_plyr_hlthy_fRollRight",		rect_plyr_hlthy_fRollRight);
-	addSprite("spr_plyr_dmgd_fRollLeft",			rect_plyr_dmgd_fRollLeft);
-	addSprite("spr_plyr_dmgd_hRollLeft",			rect_plyr_dmgd_hRollLeft);
-	addSprite("spr_plyr_dmgd_straight",			rect_plyr_dmgd_straight);
-	addSprite("spr_plyr_dmgd_hRollRight",		rect_plyr_dmgd_hRollRight);
-	addSprite("spr_plyr_dmgd_fRollRight",		rect_plyr_dmgd_fRollRight);
-	addSprite("spr_plyr_intr_1",					rect_plyr_intr_1);
-	addSprite("spr_plyr_intr_2",					rect_plyr_intr_2);
-	addSprite("spr_plyr_intr_3",					rect_plyr_intr_3);
-	addSprite("spr_plyr_intr_4",					rect_plyr_intr_4);
-	addSprite("spr_plyr_intr_5",					rect_plyr_intr_5);
-	addSprite("spr_plyr_intr_6",					rect_plyr_intr_6);
-	addSprite("spr_plyr_intr_7",					rect_plyr_intr_7);
+	//add sprites to sprites vector
+	addSprite(rect_plyr_hlthy_fRollLeft);
+	addSprite(rect_plyr_hlthy_hRollLeft);
+	addSprite(rect_plyr_hlthy_straight);
+	addSprite(rect_plyr_hlthy_hRollRight);
+	addSprite(rect_plyr_hlthy_fRollRight);
+	addSprite(rect_plyr_dmgd_fRollLeft);
+	addSprite(rect_plyr_dmgd_hRollLeft);
+	addSprite(rect_plyr_dmgd_straight);
+	addSprite(rect_plyr_dmgd_hRollRight);
+	addSprite(rect_plyr_dmgd_fRollRight);
+	addSprite(rect_plyr_intr_1);
+	addSprite(rect_plyr_intr_2);
+	addSprite(rect_plyr_intr_3);
+	addSprite(rect_plyr_intr_4);
+	addSprite(rect_plyr_intr_5);
+	addSprite(rect_plyr_intr_6);
+	addSprite(rect_plyr_intr_7);
 }
 
 SDL_Rect Player::getSprite() {
-	std::string targetName; //string of desired sprite's name
 	if(getXVel() < 0) { //if plane is moving left,
-		targetName = "spr_plyr_hlthy_fRollLeft";
+		sprite = SPR_PLYR_HLTHY_FROLLLEFT;
 	} else if(getXVel() > 0) { //if plane is moving right,
-		targetName = "spr_plyr_hlthy_fRollRight";
+		sprite = SPR_PLYR_HLTHY_FROLLRIGHT;
 	} else {
-		targetName = "spr_plyr_hlthy_straight";
+		sprite = SPR_PLYR_HLTHY_STRAIGHT;
 	}
 	
-	unsigned int i = 0; //iterator for searching sprites array (unsigned to satisfy -Wall)
-	while(i < sprites.size()) { //while iterator is less than size of sprites array,
-		if (sprites[i].name == targetName) { //if sprite's name matches target name,
-			return sprites[i].clip; //return that sprite's clip
-		}
-		i++; //increment iterator
-	}
-	return sprites[2].clip; //otherwise, return clip of "spr_plyr_hlthy_straight"
+	return sprites[sprite];
 }
 
 void Player::setXVel(double xV) {

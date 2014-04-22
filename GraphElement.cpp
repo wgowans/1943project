@@ -7,7 +7,7 @@ GraphElement.cpp
 History
 	03/31/14	Bill Gowans		Define constructor and SDL_graph_function()
 	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, define constructor, addSprite(), getSprite(), getX(), getY(), setX(), and setY()
-	04/22/14	Jon Richelsen	Define deconstructor, fix typos, and implement GE_Ptrs vector
+	04/22/14	Jon Richelsen	Define deconstructor, fix typos, implement GE_Ptrs vector, and simplify addSprite() function with enum
 */
 #include"GraphElement.h"
 #include<algorithm>
@@ -23,11 +23,8 @@ GraphElement::GraphElement(double xP, double yP) { //nondefault constructor, set
 	GE_Ptrs.push_back(this);
 }
 
-void GraphElement::addSprite(std::string n, SDL_Rect c) { //adds sprite struct to sprites array [name, clip]
-	sprite newSprite;
-	newSprite.name = n;
-	newSprite.clip = c;
-	sprites.push_back(newSprite);
+void GraphElement::addSprite(SDL_Rect clip) { //adds sprite struct to sprites array [name, clip]
+	sprites.push_back(clip);
 }
 
 double GraphElement::getX() {
