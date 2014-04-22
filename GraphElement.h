@@ -7,8 +7,11 @@ GraphElement.h
 History
 	03/31/14	Bill Gowans		Declare constructor, SDL_graph_function(), and private variables x_Pos and y_Pos
 	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, declare addSprite(), getSprite(), getX(), getY(), setX(), setY(), and private variable sprites
+	04/22/14	Jon Richelsen	Declare deconstructor
 To Do
-	Test
+	Decide where to put sprite struct
+	Fix pointers vector
+	Test that vector of pointers works
 */
 #ifndef GRAPHELEMENT_H
 #define GRAPHELEMENT_H
@@ -32,7 +35,9 @@ class GraphElement {
 		void setX(double);
 		void setY(double);
 		std::vector<sprite> sprites;
+		~GraphElement(); //deconstructor, removes this pointer from pointers vector
 	private:
+		static std::vector<void *> GE_Ptrs;
 		double xPos;
 		double yPos;
 };

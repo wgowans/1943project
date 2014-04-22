@@ -10,6 +10,7 @@ History
 	04/08/14	Jack Magiera	Implement simply flying plane sprite (does not use classes)
 	04/14/14	Jack Magiera	Edit to make compatible with GraphElement
 	04/16/14	Jon Richelsen	Standardize
+	04/22/14 Jon Richelsen	Add default case to counter case structure
 To Do
 */
 #include<iostream>
@@ -115,6 +116,8 @@ int main(int argc, char **argv)
 					break;
 				case SDLK_x:
 					score.increment(10);
+					break;
+				default:
 					break;
 			}
 		}
