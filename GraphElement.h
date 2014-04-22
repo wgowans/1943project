@@ -7,10 +7,9 @@ GraphElement.h
 History
 	03/31/14	Bill Gowans		Declare constructor, SDL_graph_function(), and private variables x_Pos and y_Pos
 	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, declare addSprite(), getSprite(), getX(), getY(), setX(), setY(), and private variable sprites
-	04/22/14	Jon Richelsen	Declare deconstructor
+	04/22/14	Jon Richelsen	Declare deconstructor and private variable GE_Ptrs
 To Do
 	Decide where to put sprite struct
-	Fix pointers vector
 	Test that vector of pointers works
 */
 #ifndef GRAPHELEMENT_H
