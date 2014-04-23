@@ -7,17 +7,15 @@ Player.h
 History
 	03/31/14	Bill Gowans		Create, declare constructor, Sprite(), scoreCntr(), healthCntr(), ammoCntr(), livesCntr(), getX(), getY(), getXVel(), getYVel, and private variables x_vel and y_vel
 	04/09/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Finish standardization, define spriteType and weaponType enums, sprite, and weapon
+	04/22/14 Jon Richelsen	Finish standardization, define spriteType and weaponType enums, sprite, and weapon, fix typos
 To Do
 	Decide where to put spriteType and weaponType enums
 */
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include<string>
-#include<vector>
 #include"SDL/SDL.h"
-#include "GraphElement.h"
+#include"GraphElement.h"
 
 typedef enum {
 	SPR_PLYR_HLTHY_FROLLLEFT,

@@ -4,7 +4,7 @@ RM := rm -f
 LDLIBS := -lSDL -lSDL_image -lSDL_ttf
 EXEC := Blitz
 
-OBJS := main.o Counter.o GraphElement.o Player.o
+OBJS := main.o Counter.o GraphElement.o Player.o Powerup.o
 
 all: $(EXEC)
 
@@ -22,6 +22,9 @@ GraphElement.o: GraphElement.h GraphElement.cpp
 
 Player.o: Player.h Player.cpp
 	$(CXX) $(CXXFLAGS) -c Player.cpp
+	
+Powerup.o: Powerup.h Powerup.cpp
+	$(CXX) $(CXXFLAGS) -c Powerup.cpp
 
 clean:
 	$(RM) *.o $(EXEC)
