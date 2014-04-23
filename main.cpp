@@ -10,7 +10,7 @@ History
 	04/08/14	Jack Magiera	Implement simply flying plane sprite (does not use classes)
 	04/14/14	Jack Magiera	Edit to make compatible with GraphElement
 	04/16/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Add default case to counter case structure, continue standardization
+	04/22/14 Jon Richelsen	Add default case to counter case structure, continue standardization,
 To Do
 */
 #include<iostream>
@@ -104,16 +104,16 @@ int main(int argc, char * argv[]) {
 
 		//Begin testing movement
 		Uint8 * keystates = SDL_GetKeyState(NULL);
-		if(keystates[SDLK_UP] && newPlayer.getY() > 1) {
+		if(keystates[SDLK_UP] && newPlayer.getYPos() > 1) {
 			newPlayer.setYVel(newPlayer.getYVel() - .1);
 		}
-		if(keystates[SDLK_DOWN] && newPlayer.getY() < (WINDOW_HEIGHT - 10)) {
+		if(keystates[SDLK_DOWN] && newPlayer.getYPos() < (WINDOW_HEIGHT - 10)) {
 			newPlayer.setYVel(newPlayer.getYVel() + .1);
 		}
-		if(keystates[SDLK_LEFT] && newPlayer.getX() > 1) {
+		if(keystates[SDLK_LEFT] && newPlayer.getXPos() > 1) {
 			newPlayer.setXVel(newPlayer.getXVel() - .1);
 		}
-		if(keystates[SDLK_RIGHT] && newPlayer.getX() < (WINDOW_WIDTH - 10)) {
+		if(keystates[SDLK_RIGHT] && newPlayer.getXPos() < (WINDOW_WIDTH - 10)) {
 			newPlayer.setXVel(newPlayer.getXVel() + .1);
 		}
 
@@ -121,10 +121,10 @@ int main(int argc, char * argv[]) {
         
 		SDL_BlitSurface(scoreSurface, NULL, screen, &scoreLocation);
 	
-		newPlayer.setX(newPlayer.getX()+newPlayer.getXVel());
-		newPlayer.setY(newPlayer.getY()+newPlayer.getYVel());
+		newPlayer.setXPos(newPlayer.getXPos()+newPlayer.getXVel());
+		newPlayer.setYPos(newPlayer.getYPos()+newPlayer.getYVel());
 
-		applySurface(newPlayer.getX(),newPlayer.getY(),spriteSheet, screen, &newPlayer.getSprite());        
+		applySurface(newPlayer.getXPos(),newPlayer.getYPos(),spriteSheet, screen, &newPlayer.getSprite());        
        SDL_Flip(screen);
     }
     

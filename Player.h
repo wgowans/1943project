@@ -5,9 +5,9 @@ CSE20212
 Player.h
 	Interface of Player class (coordinate movement and sprites of player's plane)
 History
-	03/31/14	Bill Gowans		Create, declare constructor, Sprite(), scoreCntr(), healthCntr(), ammoCntr(), livesCntr(), getX(), getY(), getXVel(), getYVel, and private variables x_vel and y_vel
+	03/31/14	Bill Gowans		Create, declare constructor, Sprite(), scoreCntr(), healthCntr(), ammoCntr(), livesCntr(), get[XY](), get[XY]Vel(), and private variables [xy]_vel
 	04/09/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Finish standardization, define spriteType and weaponType enums, sprite, and weapon, fix typos
+	04/22/14 Jon Richelsen	Finish standardization, define spriteType and weaponType enums, sprite, and weapon, fix typos, remove get[XY]Vel() and private variables [xy]Vel
 To Do
 	Decide where to put spriteType and weaponType enums
 */
@@ -49,13 +49,7 @@ class Player : public GraphElement{
 	public:
 		Player(double, double); //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
 		SDL_Rect getSprite();
-		double getXVel();
-		double getYVel();
-		void setXVel(double);
-		void setYVel(double);
 	private:
-		double xVel;
-		double yVel;
 		spriteType sprite; //enum that stores player plane's sprite
 		weaponType weapon; //enum that stores player plane's current weapon
 //		Counter ammoCntr (int);

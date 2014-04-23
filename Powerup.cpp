@@ -5,7 +5,7 @@ CSE20212
 Powerup.cpp
 	Implementation of Powerup class (coordinate movement, type, and sprite of powerup)
 History
-	04/22/14 Jon Richelsen	Create, copying everything from player
+	04/22/14 Jon Richelsen	Create, copying everything from player, remove definitions for get[XY]Vel()
 */
 #include"Powerup.h"
 #include<vector>
@@ -13,8 +13,6 @@ History
 #include"GraphElement.h"
 
 Powerup::Powerup(double xP, double yP, powerType p) : GraphElement(xP, yP) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos, power]
-	xVel = 0;
-	yVel = 0;
 	power = p;
 	
 	SDL_Rect rect_pwrup_pow; //sprite of POW powerup
@@ -64,20 +62,4 @@ Powerup::Powerup(double xP, double yP, powerType p) : GraphElement(xP, yP) { //n
 
 SDL_Rect Powerup::getSprite() {
 	return sprites[power];
-}
-
-void Powerup::setXVel(double xV) {
-	xVel = xV;
-}
-
-void Powerup::setYVel(double yV) {
-	yVel = yV;
-}
-
-double Powerup::getXVel() {
-	return xVel;
-}
-
-double Powerup::getYVel() {
-	return yVel;
 }

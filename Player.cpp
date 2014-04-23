@@ -7,7 +7,7 @@ Player.cpp
 History
 	03/31/14	Bill Gowans		Create
 	04/09/14	Jon Richelsen	Start standardization
-	04/22/14 Jon Richelsen	Finish standardization, add intro sprites, simplify getSprite using enum spriteType, fix typos
+	04/22/14 Jon Richelsen	Finish standardization, add intro sprites, simplify getSprite using enum spriteType, fix typos, remove definitions for get[XY]Vel()
 */
 #include"Player.h"
 #include<vector>
@@ -15,8 +15,6 @@ History
 #include"GraphElement.h"
 
 Player::Player(double xP, double yP) : GraphElement(xP, yP) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
-	xVel = 0;
-	yVel = 0;
 	sprite = SPR_PLYR_HLTHY_STRAIGHT;
 	weapon = STANDARD;
 
@@ -152,20 +150,4 @@ SDL_Rect Player::getSprite() {
 	}
 	
 	return sprites[sprite];
-}
-
-void Player::setXVel(double xV) {
-	xVel = xV;
-}
-
-void Player::setYVel(double yV) {
-	yVel = yV;
-}
-
-double Player::getXVel() {
-	return xVel;
-}
-
-double Player::getYVel() {
-	return yVel;
 }

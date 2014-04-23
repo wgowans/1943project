@@ -6,8 +6,8 @@ GraphElement.cpp
 	Implementation of GraphElement class (store location and sprites of graphic element)
 History
 	03/31/14	Bill Gowans		Define constructor and SDL_graph_function()
-	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, define constructor, addSprite(), getSprite(), getX(), getY(), setX(), and setY()
-	04/22/14	Jon Richelsen	Define deconstructor, fix typos, implement GE_Ptrs vector, and simplify addSprite() function with enum
+	04/09/14	Jon Richelsen	Standardize, combine with Sprite class, define constructor, addSprite(), getSprite(), get[XY](), and set[XY]()
+	04/22/14	Jon Richelsen	Define deconstructor, fix typos, implement GE_Ptrs vector, and simplify addSprite() function with enum, rename get[XY]() and set[XY] to get[XY]Pos() and set[XY]Pos, define get[XY]Vel() and setVel[XY]
 */
 #include"GraphElement.h"
 #include<algorithm>
@@ -27,20 +27,36 @@ void GraphElement::addSprite(SDL_Rect clip) { //adds sprite struct to sprites ar
 	sprites.push_back(clip);
 }
 
-double GraphElement::getX() {
+double GraphElement::getXPos() {
 	return xPos;
 }
 
-double GraphElement::getY() {
+double GraphElement::getYPos() {
 	return yPos;
 }
 
-void GraphElement::setX(double xP) {
+double GraphElement::getXVel() {
+	return xVel;
+}
+
+double GraphElement::getYVel() {
+	return yVel;
+}
+
+void GraphElement::setXPos(double xP) {
 	xPos = xP;
 }
 
-void GraphElement::setY(double yP) {
+void GraphElement::setYPos(double yP) {
 	yPos = yP;
+}
+
+void GraphElement::setXVel(double xV) {
+	xVel = xV;
+}
+
+void GraphElement::setYVel(double yV) {
+	yVel = yV;
 }
 
 GraphElement::~GraphElement() { //deconstructor, removes this pointer from pointers vector
