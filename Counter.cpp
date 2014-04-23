@@ -8,6 +8,7 @@ History
 	03/26/14	Jack Magiera	Create, define default constructor, nondefault constructor, reset(), increment(), ++, getValue(), render(), and private variables min, max, value, interval, x, and y
 	04/16/14	Jon Richelsen	Standardize, change variables to more readable names, define getXPos(), getYPos(), ++ (prefix), and ++ (postfix)
 	04/16/14	Jon Richelsen	Fix typos
+	04/23/14	Jon Richelsen	Define decrement(), fix decrement() and increment() so they don't violate the minimum and maximum values, respectively
 */
 #include "Counter.h"
 #include <sstream>
@@ -45,8 +46,22 @@ int Counter::getYPos() {
     return yPos;
 }
 
+void Counter::decrement(int times) { //increments counter by n intervals (not allowing to go negative) [n]
+	int propValue = value - (interval * times);
+	if(propValue < min) {
+		value = min;
+	} else {
+		value -= interval * times;
+	}
+}
+
 void Counter::increment(int times) { //increments counter by n intervals
-	value += interval * times;
+	int propValue = value + (interval * times);
+	if(propValue > max) {
+		value = max;
+	} else {
+		value += interval * times;
+	}
 }
 
 void Counter::reset() {

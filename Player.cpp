@@ -8,13 +8,18 @@ History
 	03/31/14	Bill Gowans		Create
 	04/09/14	Jon Richelsen	Start standardization
 	04/22/14 Jon Richelsen	Finish standardization, add intro sprites, simplify getSprite using enum spriteType, fix typos, remove definitions for get[XY]Vel()
+	04/23/14 Jon Richelsen	Define add50_IncAmmo(), sub1_IncAmmo(), add4_IncHealth(), and sub1_IncHealth(), add ammo and health member initialization to constructor
 */
 #include"Player.h"
 #include<vector>
 #include"SDL/SDL.h"
 #include"GraphElement.h"
+#include"Counter.h"
 
-Player::Player(double xP, double yP) : GraphElement(xP, yP) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
+Player::Player(double xP, double yP) :
+	GraphElement(xP, yP),
+	ammo(100, 300, 100, 0, 100, 1),
+	health(100, 100, 100, 0, 100, 5) { //nondefault constructor, passes position to GraphElement constructor [xPos, yPos]
 	sprite = SPR_PLYR_HLTHY_STRAIGHT;
 	weapon = STANDARD;
 
@@ -150,4 +155,20 @@ SDL_Rect Player::getSprite() {
 	}
 	
 	return sprites[sprite];
+}
+
+void Player::add50_IncAmmo() {
+	ammo.increment(50);
+}
+
+void Player::sub1_IncAmmo() {
+	ammo.decrement(1);
+}
+
+void Player::add4_IncHealth() {
+	health.increment(4);
+}
+
+void Player::sub1_IncHealth() {
+	health.decrement(1);
 }

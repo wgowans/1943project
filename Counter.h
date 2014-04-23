@@ -7,6 +7,7 @@ Counter.h
 History
 	03/26/14	Jack Magiera	Create, declare default constructor, nondefault constructor, reset(), increment(), ++, getValue(), render(), and private variables min, max, value, interval, x, and y
 	04/16/14	Jon Richelsen	Standardize, change variables to more readable names, declare getXPos(), getYPos(), ++ (prefix), and ++ (postfix)
+	04/23/14	Jon Richelsen	Declare decrement()
 To Do
 	Check that overloaded ++ operator works
 	Develop icon-based counter (e.g. would display 5 plane icons instead of "5")
@@ -24,6 +25,7 @@ class Counter {
 		int getValue();
 		int getXPos();
 		int getYPos();
+		void decrement(int); //increments counter by n intervals (not allowing to go negative) [n]
 		void increment(int); //increments counter by n intervals [n]
 		void reset();
 		SDL_Surface * render(TTF_Font *, SDL_Color);

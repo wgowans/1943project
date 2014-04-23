@@ -6,6 +6,7 @@ Powerup.cpp
 	Implementation of Powerup class (coordinate movement, type, and sprite of powerup)
 History
 	04/22/14 Jon Richelsen	Create, copying everything from player, remove definitions for get[XY]Vel()
+	04/23/14	Jon Richelsen	Define getPower()
 */
 #include"Powerup.h"
 #include<vector>
@@ -62,4 +63,8 @@ Powerup::Powerup(double xP, double yP, powerType p) : GraphElement(xP, yP) { //n
 
 SDL_Rect Powerup::getSprite() {
 	return sprites[power];
+}
+
+powerType getPower() {
+	return power;
 }

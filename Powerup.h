@@ -5,7 +5,8 @@ CSE20212
 Powerup.h
 	Interface of Powerup class (coordinate movement, type, and sprite of powerup)
 History
-	04/22/14 Jon Richelsen	Create, copying everything from player, remove get[XY]Vel() and private variables [xy]Vel
+	04/22/14 Jon Richelsen	Create, copying everything from player, remove get[XY]Vel() and private variables [xy]Vel, rename spriteType to powerupSpriteType, fix typos
+	04/23/14	Jon Richelsen	Declare getPower() and private variable power
 To Do
 */
 #ifndef POWERUP_H
@@ -15,16 +16,16 @@ To Do
 #include"GraphElement.h"
 
 typedef enum {
-	RECT_PWRUP_POW,
-	RECT_PWRUP_SPRD,
-	RECT_PWRUP_MSSL,
-	RECT_PWRUP_BEAM,
-	RECT_PWRUP_AUTO,
-	RECT_PWRUP_COW
-} spriteType;
+	SPR_PWRUP_POW,
+	SPR_PWRUP_SPRD,
+	SPR_PWRUP_MSSL,
+	SPR_PWRUP_BEAM,
+	SPR_PWRUP_AUTO,
+	SPR_PWRUP_COW
+} powerupSpriteType;
 
 typedef enum {
-			STANDARD,
+			POW,
 			SPREAD,
 			MISSILE,
 			BEAM,
@@ -36,8 +37,9 @@ class Powerup : public GraphElement{
 	public:
 		Powerup(double, double, powerType); //nondefault constructor, passes position to GraphElement constructor [xPos, yPos, power]
 		SDL_Rect getSprite();
+		powerType getPower();
 	private:
-		spriteType sprite; //enum that stores powerup's sprite
+		powerupSpriteType sprite; //enum that stores powerup's sprite
 		powerType power; //enum that stores powerup's power		
 };
 
