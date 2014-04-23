@@ -1,5 +1,9 @@
 /* Implementation of timer class. Class assists background scrolling functionality */
 
+#include "SDL/SDL.h"
+#include "SDL/SDL_image.h"
+#include <string>
+#include "Background.h"
 #include "Timer.h"
 
 Timer::Timer() {
